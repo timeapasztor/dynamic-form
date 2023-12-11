@@ -1,46 +1,23 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+## Available Script
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Summary of the Task:
 
-### `npm test`
+- the form is loading the fields dynamically, changes are allowed and the integer limits are respected
+- I improved the design with using Emotion (compatible with the MUI version nr. 5)
+- exception to the previous note: the MUI has an integer input in unstable condition (screenshot attached in my email), that is why I used the basic html input component
+- I have implemented a reusable component: Entries.tsx; this way new fields can be added dynamically (and the field components are just written once)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Proposal for the next steps:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- step 1: adding a boolean field called "required" in the configuration file
+- step 2: incorporating this boolean inside the DynamicForm.tsx (inject it to the fields)
+- step 3: create a new error state
+- step 4: when the onChange is called, set the error state if the field's value is empty (use the key from the entry, and set a vlue to it: "This field is required!")
+- step 5: write a validation function (is there any value in the error state that is not empty string?)
+- step 6: on the submit click, first thing to do is to check the result of validation
+- step 7?: we could even do a live error handling -> disable the submit button until all required fieldsare filled (and adding a tooltip to help the user with a message)
